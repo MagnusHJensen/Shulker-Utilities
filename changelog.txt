@@ -1,3 +1,4 @@
 1.16.5-1.0.0
-- Added Assembly & Disassembly kits.
 - Initial release of Shulker Utilities
+- Added Assembly & Disassembly kits.
+- Added Shulker Box Cactus
