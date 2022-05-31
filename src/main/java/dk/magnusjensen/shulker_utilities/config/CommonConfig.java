@@ -17,18 +17,22 @@ package dk.magnusjensen.shulker_utilities.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class CommonConfig {
-	public static final ForgeConfigSpec GENERAL_SPEC;
-	static {
-		ForgeConfigSpec.Builder configBuilder = new ForgeConfigSpec.Builder();
-		setupConfig(configBuilder);
-		GENERAL_SPEC = configBuilder.build();
-	}
+  public static final ForgeConfigSpec GENERAL_SPEC;
 
-	public static ForgeConfigSpec.BooleanValue rainbowShulkers;
+  static {
+    ForgeConfigSpec.Builder configBuilder = new ForgeConfigSpec.Builder();
+    setupConfig(configBuilder);
+    GENERAL_SPEC = configBuilder.build();
+  }
 
-	private static void setupConfig(ForgeConfigSpec.Builder builder) {
-		rainbowShulkers = builder
-			.comment("Wether or not a random coloured shulker should appear when using the assembly kit.")
-			.define("rainbowShulkers", true);
-	}
+  public static ForgeConfigSpec.BooleanValue rainbowShulkers;
+
+  private static void setupConfig(ForgeConfigSpec.Builder builder) {
+    rainbowShulkers =
+        builder
+            .comment(
+                "Wether or not a random coloured shulker should appear when using the assembly"
+                    + " kit.")
+            .define("rainbowShulkers", true);
+  }
 }

@@ -29,17 +29,19 @@ import org.apache.logging.log4j.Logger;
 @Mod("shulker_utilities")
 public class ShulkerUtilities {
 
-	// Directly reference a log4j logger.
-	public static final String MOD_ID = "shulker_utilities";
-	public static final Logger LOGGER = LogManager.getLogger();
+  // Directly reference a log4j logger.
+  public static final String MOD_ID = "shulker_utilities";
+  public static final Logger LOGGER = LogManager.getLogger();
 
-	public ShulkerUtilities() {
-		ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ModTileEntities.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+  public ShulkerUtilities() {
+    ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    ModTileEntities.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.GENERAL_SPEC, "shulker-utilities-common.toml");
+    ModLoadingContext.get()
+        .registerConfig(
+            ModConfig.Type.COMMON, CommonConfig.GENERAL_SPEC, "shulker-utilities-common.toml");
 
-		MinecraftForge.EVENT_BUS.register(this);
-	}
+    MinecraftForge.EVENT_BUS.register(this);
+  }
 }

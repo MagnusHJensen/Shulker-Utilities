@@ -15,6 +15,8 @@
 package dk.magnusjensen.shulker_utilities.tileentity;
 
 import dk.magnusjensen.shulker_utilities.registry.ModTileEntities;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemStack;
@@ -24,45 +26,38 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 public class ShulkerBoxCactusTileEntity extends ShulkerBoxTileEntity {
 
-	public ShulkerBoxCactusTileEntity(@Nullable DyeColor p_i47242_1_) {
-		super(p_i47242_1_);
-	}
+  public ShulkerBoxCactusTileEntity(@Nullable DyeColor p_i47242_1_) {
+    super(p_i47242_1_);
+  }
 
-	public ShulkerBoxCactusTileEntity() {
-		this(null);
-	}
+  public ShulkerBoxCactusTileEntity() {
+    this(null);
+  }
 
-	@Override
-	public TileEntityType<?> getType() {
-		return ModTileEntities.SHULKER_BOX_CACTUS.get();
-	}
+  @Override
+  public TileEntityType<?> getType() {
+    return ModTileEntities.SHULKER_BOX_CACTUS.get();
+  }
 
-	@Override
-	public void startOpen(PlayerEntity pPlayer) {
-		super.startOpen(pPlayer);
-	}
+  @Override
+  public void startOpen(PlayerEntity pPlayer) {
+    super.startOpen(pPlayer);
+  }
 
-
-
-
-	@Override
-	protected IItemHandler createUnSidedHandler() {
-		return new SidedInvWrapper(this, Direction.UP) {
-			@Nonnull
-			@Override
-			public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-				if (!this.inv.canPlaceItemThroughFace(slot, stack, Direction.UP) || !this.inv.canPlaceItem(slot, stack)) {
-					return stack;
-				}
-				return ItemStack.EMPTY;
-			}
-		};
-	}
-
-
+  @Override
+  protected IItemHandler createUnSidedHandler() {
+    return new SidedInvWrapper(this, Direction.UP) {
+      @Nonnull
+      @Override
+      public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+        if (!this.inv.canPlaceItemThroughFace(slot, stack, Direction.UP)
+            || !this.inv.canPlaceItem(slot, stack)) {
+          return stack;
+        }
+        return ItemStack.EMPTY;
+      }
+    };
+  }
 }
