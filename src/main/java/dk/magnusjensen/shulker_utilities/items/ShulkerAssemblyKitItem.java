@@ -14,6 +14,7 @@
 
 package dk.magnusjensen.shulker_utilities.items;
 
+import dk.magnusjensen.shulker_utilities.config.CommonConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.block.SoundType;
@@ -58,7 +59,7 @@ public class ShulkerAssemblyKitItem extends Item {
 			pContext.getLevel().removeBlock(pContext.getClickedPos(), false);
 
 			DyeColor color = null;
-			if (true) {
+			if (CommonConfig.rainbowShulkers.get()) {
 				color = DyeColor.byId(MathHelper.nextInt(new Random(), 0, 15));
 			}
 
