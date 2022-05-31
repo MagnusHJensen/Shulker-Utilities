@@ -14,6 +14,8 @@
 
 package dk.magnusjensen.shulker_utilities.items;
 
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
@@ -29,45 +31,64 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShulkerDisassemblyToolkitItem extends Item {
-	public ShulkerDisassemblyToolkitItem(Properties pProperties) {
-		super(pProperties);
-	}
+  public ShulkerDisassemblyToolkitItem(Properties pProperties) {
+    super(pProperties);
+  }
 
-	@Override
-	public ActionResultType useOn(ItemUseContext pContext) {
-		BlockState state = pContext.getLevel().getBlockState(pContext.getClickedPos());
-		if (state.getBlock().is(BlockTags.SHULKER_BOXES)) {
-			ShulkerBoxTileEntity shulkerTE = (ShulkerBoxTileEntity) pContext.getLevel().getBlockEntity(pContext.getClickedPos());
-			List<ItemStack> stacks = new ArrayList<>();
-			for (int i = 0; i < 27; i++) {
-				stacks.add(shulkerTE.removeItem(i, 64));
-			}
+  @Override
+  public ActionResultType useOn(ItemUseContext pContext) {
+    BlockState state = pContext.getLevel().getBlockState(pContext.getClickedPos());
+    if (state.getBlock().is(BlockTags.SHULKER_BOXES)) {
+      ShulkerBoxTileEntity shulkerTE =
+          (ShulkerBoxTileEntity) pContext.getLevel().getBlockEntity(pContext.getClickedPos());
+      List<ItemStack> stacks = new ArrayList<>();
+      for (int i = 0; i < 27; i++) {
+        stacks.add(shulkerTE.removeItem(i, 64));
+      }
 
-			pContext.getLevel().removeBlock(pContext.getClickedPos(), false);
+      pContext.getLevel().removeBlock(pContext.getClickedPos(), false);
 
-			BlockState chestState = Blocks.CHEST.defaultBlockState();
+      BlockState chestState = Blocks.CHEST.defaultBlockState();
 
-			SoundType soundType = chestState.getSoundType(pContext.getLevel(), pContext.getClickedPos(), pContext.getPlayer());
+      SoundType soundType =
+          chestState.getSoundType(
+              pContext.getLevel(), pContext.getClickedPos(), pContext.getPlayer());
 
-			pContext.getLevel().playSound(pContext.getPlayer(), pContext.getClickedPos(), soundType.getPlaceSound(), SoundCategory.BLOCKS, (soundType.getVolume() + 1.0F) / 2.0F, soundType.getPitch() * 0.8F);
-			pContext.getLevel().setBlock(pContext.getClickedPos(), chestState, 3);
-			ChestTileEntity chestTe = (ChestTileEntity) pContext.getLevel().getBlockEntity(pContext.getClickedPos());
+      pContext
+          .getLevel()
+          .playSound(
+              pContext.getPlayer(),
+              pContext.getClickedPos(),
+              soundType.getPlaceSound(),
+              SoundCategory.BLOCKS,
+              (soundType.getVolume() + 1.0F) / 2.0F,
+              soundType.getPitch() * 0.8F);
+      pContext.getLevel().setBlock(pContext.getClickedPos(), chestState, 3);
+      ChestTileEntity chestTe =
+          (ChestTileEntity) pContext.getLevel().getBlockEntity(pContext.getClickedPos());
 
-			chestTe.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent((handler) -> {
-				for (int i = 0; i < 27; i++) {
-					handler.insertItem(i, stacks.get(i), false);
-				}
-			});
+      chestTe
+          .getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+          .ifPresent(
+              (handler) -> {
+                for (int i = 0; i < 27; i++) {
+                  handler.insertItem(i, stacks.get(i), false);
+                }
+              });
 
-			pContext.getLevel().addFreshEntity(new ItemEntity(pContext.getLevel(), pContext.getClickedPos().getX(), pContext.getClickedPos().getY(), pContext.getClickedPos().getZ(), new ItemStack(Items.SHULKER_SHELL, 2)));
+      pContext
+          .getLevel()
+          .addFreshEntity(
+              new ItemEntity(
+                  pContext.getLevel(),
+                  pContext.getClickedPos().getX(),
+                  pContext.getClickedPos().getY(),
+                  pContext.getClickedPos().getZ(),
+                  new ItemStack(Items.SHULKER_SHELL, 2)));
 
-
-			return ActionResultType.CONSUME;
-		}
-		return super.useOn(pContext);
-	}
+      return ActionResultType.CONSUME;
+    }
+    return super.useOn(pContext);
+  }
 }
