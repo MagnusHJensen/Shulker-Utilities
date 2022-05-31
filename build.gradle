@@ -29,7 +29,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 
 group = 'dk.magnusjensen'
-version = '0.0.1'
+version = '1.0.0'
 
 java {
     archivesBaseName = 'shulker_utilities'
@@ -48,7 +48,7 @@ minecraft {
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'parchment', version: '2022.03.06-1.16.5'
+    mappings channel: 'parchment', version: "${parchment_version}-${minecraft_version}"
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -146,7 +146,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.35'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
 
 
@@ -222,7 +222,9 @@ curseforge {
 }
 
 modrinth {
-    token = project.modrinth_token
+    if (project.hasProperty('curseforge_key')) {
+        token = project.modrinth_token
+    }
     projectId = project.mProjectId
     versionType = project.release_type
     gameVersions = [project.minecraft_version]
