@@ -16,7 +16,7 @@ displayName = "Shulker Utilities"
 
 displayURL="https://github.com/MagnusHJensen/Shulker-Utilities" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="shulker_utilities.png" #optional
+logoFile="shulker-utilities-logo.png" #optional
 # A text field displayed in the mod UI
 #credits="Thanks for this example mod goes to Java" #optional
 

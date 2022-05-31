@@ -15,7 +15,9 @@
 package dk.magnusjensen.shulker_utilities;
 
 import dk.magnusjensen.shulker_utilities.config.CommonConfig;
+import dk.magnusjensen.shulker_utilities.registry.ModBlocks;
 import dk.magnusjensen.shulker_utilities.registry.ModItems;
+import dk.magnusjensen.shulker_utilities.registry.ModTileEntities;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +35,8 @@ public class ShulkerUtilities {
 
 	public ShulkerUtilities() {
 		ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		ModTileEntities.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.GENERAL_SPEC, "shulker-utilities-common.toml");
 

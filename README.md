@@ -1,5 +1,6 @@
 <h1>
-    <img src="shulker-utilities-logo.png" alt="Shulker Utilities" width="400"/>
+    <img src="shulker-utilities-logo.png" alt="Shulker Utilities" width="200"/>
+    Shulker Utilities
 </h1>
 
 
@@ -10,7 +11,7 @@ Shulker utilities is a Vanilla+ mod, that adds and enhances the use of shulker b
 At it's current stage it's a very simple mod, that currently only allows for assembly/disassembly of a shulker in-world.
 
 
-###You can check it out over at [CurseForge] or [Modrinth]
+### You can check it out over at [CurseForge] or [Modrinth]
 
 
 
