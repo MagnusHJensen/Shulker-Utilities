@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "x",
+    "y",
+    "x"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:stick"
+    },
+    "y":
+    {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result":
+  {
+    "item": "shulker_utilities:shulker_disassembly_toolkit",
+    "count": 1
+  }
+}

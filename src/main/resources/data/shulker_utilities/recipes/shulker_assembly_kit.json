@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "x",
+    "y",
+    "x"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:shulker_shell"
+    },
+    "y":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "shulker_utilities:shulker_assembly_kit",
+    "count": 1
+  }
+}

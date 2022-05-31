@@ -1,0 +1,43 @@
+
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "GNU GPLv3"
+issueTrackerURL="https://github.com/MagnusHJensen/Shulker-Utilities/issues" #optional
+
+[[mods]]
+
+modId = "shulker_utilities"
+
+version = "${file.jarVersion}"
+
+displayName = "Shulker Utilities"
+# A URL to query for updates for this mod. See the JSON update specification <here>
+#updateJSONURL="http://myurl.me/" #optional
+
+displayURL="https://github.com/MagnusHJensen/Shulker-Utilities" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+#logoFile="shulker_utilities.png" #optional
+# A text field displayed in the mod UI
+#credits="Thanks for this example mod goes to Java" #optional
+
+authors = "legenden" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description = '''
+Shulker Utilities enhances the vanilla Shulker boxes, by adding more uses to them.
+'''
+
+[[dependencies.shulker_utilities]]
+
+modId = "forge"
+mandatory = true
+versionRange = "[36,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.shulker_utilities]]
+modId = "minecraft"
+mandatory = true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange = "[1.16.5,1.17)"
+ordering = "NONE"
+side = "BOTH"
