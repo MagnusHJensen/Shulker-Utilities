@@ -10,6 +10,7 @@ Shulker utilities is a Vanilla+ mod, that adds and enhances the use of shulker b
 
 At it's current stage it's a very simple mod, that currently only allows for assembly/disassembly of a shulker in-world.
 
+It also adds a shulker box cactus, which voids any items hoppered into it! A vanilla+ trash can :D
 
 ### You can check it out over at [CurseForge] or [Modrinth]
 

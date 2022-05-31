@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+
+  "ingredients": [
+    {
+      "item": "shulker_utilities:shulker_box_cactus"
+    },
+    {
+      "item": "minecraft:magenta_dye"
+    }
+  ],
+  "result":
+  {
+    "item": "shulker_utilities:magenta_shulker_box_cactus",
+    "count": 1
+  }
+}

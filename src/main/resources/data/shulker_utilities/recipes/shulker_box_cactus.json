@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "x",
+    "y",
+    "x"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:shulker_shell"
+    },
+    "y":
+    {
+      "item": "minecraft:cactus"
+    }
+  },
+  "result":
+  {
+    "item": "shulker_utilities:shulker_box_cactus",
+    "count": 1
+  }
+}
