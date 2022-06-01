@@ -26,11 +26,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 @Mod.EventBusSubscriber(modid = ShulkerUtilities.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EventHandler {
 
-	@SubscribeEvent
-	public static void onClientSetup(FMLClientSetupEvent event) {
-		event.enqueueWork(() -> {
-			ClientRegistry.bindTileEntityRenderer(ModTileEntities.SHULKER_BOX_CACTUS.get(), (dispatcher) -> new ShulkerBoxTileEntityRenderer(new ShulkerModel<>(), dispatcher));
-		});
-	}
-
+  @SubscribeEvent
+  public static void onClientSetup(FMLClientSetupEvent event) {
+    event.enqueueWork(
+        () -> {
+          ClientRegistry.bindTileEntityRenderer(
+              ModTileEntities.SHULKER_BOX_CACTUS.get(),
+              (dispatcher) -> new ShulkerBoxTileEntityRenderer(new ShulkerModel<>(), dispatcher));
+        });
+  }
 }

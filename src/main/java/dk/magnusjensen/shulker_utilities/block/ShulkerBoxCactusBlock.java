@@ -15,6 +15,7 @@
 package dk.magnusjensen.shulker_utilities.block;
 
 import dk.magnusjensen.shulker_utilities.tileentity.ShulkerBoxCactusTileEntity;
+import javax.annotation.Nullable;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.entity.monster.piglin.PiglinTasks;
@@ -29,50 +30,56 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class ShulkerBoxCactusBlock extends ShulkerBoxBlock {
-	private DyeColor color;
-	public ShulkerBoxCactusBlock(@Nullable DyeColor pColor, Properties pProperties) {
-		super(pColor, pProperties);
-		this.color = pColor;
-	}
+  private DyeColor color;
 
-	@Override
-	public TileEntity newBlockEntity(IBlockReader p_196283_1_) {
-		return new ShulkerBoxCactusTileEntity(this.color);
-	}
+  public ShulkerBoxCactusBlock(@Nullable DyeColor pColor, Properties pProperties) {
+    super(pColor, pProperties);
+    this.color = pColor;
+  }
 
-	@Override
-	public ActionResultType use(BlockState pState, World pLevel, BlockPos pPos, PlayerEntity pPlayer, Hand pHand, BlockRayTraceResult pHit) {
-		if (pLevel.isClientSide) {
-			return ActionResultType.SUCCESS;
-		} else if (pPlayer.isSpectator()) {
-			return ActionResultType.CONSUME;
-		} else {
-			TileEntity tileentity = pLevel.getBlockEntity(pPos);
-			if (tileentity instanceof ShulkerBoxTileEntity) {
-				ShulkerBoxTileEntity shulkerboxtileentity = (ShulkerBoxTileEntity)tileentity;
-				boolean flag;
-				if (shulkerboxtileentity.getAnimationStatus() == ShulkerBoxTileEntity.AnimationStatus.CLOSED) {
-					Direction direction = pState.getValue(FACING);
-					flag = pLevel.noCollision(ShulkerAABBHelper.openBoundingBox(pPos, direction));
-				} else {
-					flag = true;
-				}
+  @Override
+  public TileEntity newBlockEntity(IBlockReader p_196283_1_) {
+    return new ShulkerBoxCactusTileEntity(this.color);
+  }
 
-				if (flag) {
-					shulkerboxtileentity.startOpen(pPlayer);
-					pPlayer.hurt(DamageSource.CACTUS, 2);
-					pPlayer.awardStat(Stats.OPEN_SHULKER_BOX);
-					PiglinTasks.angerNearbyPiglins(pPlayer, true);
-					shulkerboxtileentity.stopOpen(pPlayer);
-				}
+  @Override
+  public ActionResultType use(
+      BlockState pState,
+      World pLevel,
+      BlockPos pPos,
+      PlayerEntity pPlayer,
+      Hand pHand,
+      BlockRayTraceResult pHit) {
+    if (pLevel.isClientSide) {
+      return ActionResultType.SUCCESS;
+    } else if (pPlayer.isSpectator()) {
+      return ActionResultType.CONSUME;
+    } else {
+      TileEntity tileentity = pLevel.getBlockEntity(pPos);
+      if (tileentity instanceof ShulkerBoxTileEntity) {
+        ShulkerBoxTileEntity shulkerboxtileentity = (ShulkerBoxTileEntity) tileentity;
+        boolean flag;
+        if (shulkerboxtileentity.getAnimationStatus()
+            == ShulkerBoxTileEntity.AnimationStatus.CLOSED) {
+          Direction direction = pState.getValue(FACING);
+          flag = pLevel.noCollision(ShulkerAABBHelper.openBoundingBox(pPos, direction));
+        } else {
+          flag = true;
+        }
 
-				return ActionResultType.CONSUME;
-			} else {
-				return ActionResultType.PASS;
-			}
-		}
-	}
+        if (flag) {
+          shulkerboxtileentity.startOpen(pPlayer);
+          pPlayer.hurt(DamageSource.CACTUS, 2);
+          pPlayer.awardStat(Stats.OPEN_SHULKER_BOX);
+          PiglinTasks.angerNearbyPiglins(pPlayer, true);
+          shulkerboxtileentity.stopOpen(pPlayer);
+        }
+
+        return ActionResultType.CONSUME;
+      } else {
+        return ActionResultType.PASS;
+      }
+    }
+  }
 }
