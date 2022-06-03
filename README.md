@@ -22,6 +22,6 @@ The idea originated from [gigaherz] posting about it in [MMD].
 
 
 [CurseForge]: https://curseforge.com/minecraft/mc-mods/shulker-utilities
-[Modrinth]: https://modrinth.com/mods/shulker-utilities
+[Modrinth]: https://modrinth.com/mod/shulker-utilities
 [MMD]: https://discord.mcmoddev.com
 [gigaherz]: https://www.curseforge.com/members/gigaherz
